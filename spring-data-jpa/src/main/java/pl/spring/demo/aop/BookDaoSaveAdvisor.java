@@ -28,16 +28,7 @@ public class BookDaoSaveAdvisor implements MethodBeforeAdvice {
 		}
 	}
 
-	private boolean hasAnnotation(Method method, Object o, Class annotationClazz)
-			throws NoSuchMethodException {
-		boolean hasAnnotation = method.getAnnotation(annotationClazz) != null;
-
-		if (!hasAnnotation && o != null) {
-			hasAnnotation = o.getClass()
-					.getMethod(method.getName(), method.getParameterTypes())
-					.getAnnotation(annotationClazz) != null;
-		}
-		return hasAnnotation;
+	private boolean hasAnnotation(Method method, Object o, Class annotationClazz) {
+		return  method.getAnnotation(annotationClazz) != null;
 	}
 }
-

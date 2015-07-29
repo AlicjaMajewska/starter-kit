@@ -43,9 +43,6 @@ public class BookDaoImpl implements BookDao {
     @NullableId
     @SaveId
     public BookTo save(BookTo book) {
-//        if (book.getId() == null) {
-//            book.setId(getNextId());
-//        }
         ALL_BOOKS.add(book);
         return book;
     }
