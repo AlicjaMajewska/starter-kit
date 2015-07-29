@@ -20,19 +20,21 @@
 
 	<!-- AOP -->
 	<bean id="bookDaoAdvisor" class="pl.spring.demo.aop.BookDaoAdvisor" />
+	<bean id="bookDaoSaveAdvisor" class="pl.spring.demo.aop.BookDaoSaveAdvisor" />
 
 	<bean id="bookDao" class="org.springframework.aop.framework.ProxyFactoryBean">
 		<property name="target">
 			<bean class="pl.spring.demo.dao.impl.BookDaoImpl">
-				<property name="sequence" ref="sequence" />
+<!-- 				<property name="sequence" ref="sequence" /> -->
 			</bean>
 		</property>
 		<property name="interceptorNames">
 			<list>
 				<value>bookDaoAdvisor</value>
+				<value>bookDaoSaveAdvisor</value>
 			</list>
 		</property>
 	</bean>
 
-
+ 
 </beans>

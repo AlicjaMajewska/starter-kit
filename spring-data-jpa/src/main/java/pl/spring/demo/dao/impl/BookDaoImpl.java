@@ -1,6 +1,7 @@
 package pl.spring.demo.dao.impl;
 
 import pl.spring.demo.annotation.NullableId;
+import pl.spring.demo.annotation.SaveId;
 import pl.spring.demo.common.Sequence;
 import pl.spring.demo.dao.BookDao;
 import pl.spring.demo.to.BookTo;
@@ -40,13 +41,18 @@ public class BookDaoImpl implements BookDao {
 
     @Override
     @NullableId
+    @SaveId
     public BookTo save(BookTo book) {
-        if (book.getId() == null) {
-            book.setId(sequence.nextValue(ALL_BOOKS));
-        }
+//        if (book.getId() == null) {
+//            book.setId(getNextId());
+//        }
         ALL_BOOKS.add(book);
         return book;
     }
+
+	public long getNextId() {
+		return sequence.nextValue(ALL_BOOKS);
+	}
 
     public void setSequence(Sequence sequence) {
         this.sequence = sequence;
