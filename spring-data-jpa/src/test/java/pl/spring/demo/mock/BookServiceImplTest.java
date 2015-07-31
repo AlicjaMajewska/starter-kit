@@ -33,28 +33,39 @@ public class BookServiceImplTest {
 	private BookServiceImpl bookService;
 	@Mock
 	private BookDao bookDao;
-	
 
+	@Mock
 	private BookMapper bookMapper;
 
 	@Before
 	public void setUpt() {
 		MockitoAnnotations.initMocks(this);
-		bookMapper = new BookMapper();
-		Whitebox.setInternalState(bookService, "bookMapper", bookMapper);
 	}
 
 	@Test
 	public void testShouldSaveBook() {
 		// given
-		// BookEntity book = bookMapper.convertToBookEntity(new BookTo(null,
-		// "title", "author author"));
 		BookEntity book = new BookEntity(null, "title",
 				new ArrayList<AuthorTo>(Arrays.asList(new AuthorTo(1L,
 						"author", "author"))));
 		Mockito.when(bookDao.save(book)).thenReturn(
 				new BookEntity(1L, "title", new ArrayList<AuthorTo>(Arrays
 						.asList(new AuthorTo(1L, "author", "author")))));
+		
+		Mockito.when(bookMapper.convertToBookTo(book)).thenReturn(
+				new BookTo(null, "title", "author author"));
+		
+		Mockito.when(bookMapper.convertToBookTo(
+				new BookEntity(1L, "title", new ArrayList<AuthorTo>(Arrays
+						.asList(new AuthorTo(1L, "author", "author")))))).thenReturn(
+				new BookTo(1L, "title", "author author"));
+		
+		Mockito.when(
+				bookMapper.convertToBookEntity(new BookTo(null, "title",
+						"author author"))).thenReturn(
+				new BookEntity(null, "title", new ArrayList<AuthorTo>(Arrays
+						.asList(new AuthorTo(1L, "author", "author")))));
+		
 		// when
 		BookTo result = bookService.saveBook(bookMapper.convertToBookTo(book));
 		// then
