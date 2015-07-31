@@ -4,6 +4,7 @@ import org.springframework.aop.MethodBeforeAdvice;
 import org.springframework.stereotype.Component;
 
 import pl.spring.demo.dao.impl.BookDaoImpl;
+import pl.spring.demo.to.BookEntity;
 import pl.spring.demo.to.BookTo;
 import pl.spring.demo.to.IdAware;
 import pl.spring.demo.annotation.SaveId;
@@ -22,7 +23,7 @@ public class BookDaoSaveAdvisor implements MethodBeforeAdvice {
 	}
 
 	private void saveId(Object[] objects, Object o) {
-		BookTo book = (BookTo) objects[0];
+		BookEntity book = (BookEntity) objects[0];
 
 		if (book.getId() == null) {
 			book.setId(((BookDaoImpl) o).getNextId());
