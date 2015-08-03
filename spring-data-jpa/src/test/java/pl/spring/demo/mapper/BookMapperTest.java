@@ -25,6 +25,7 @@ public class BookMapperTest {
 				"Zbigniew Nienacki");
 		// when
 		BookTo convertToBookTo = bookMapper.convertToBookTo(bookEntity);
+		// then
 		Assert.assertTrue(bookTo.equals(convertToBookTo));
 	}
 
@@ -40,6 +41,7 @@ public class BookMapperTest {
 				"Zbigniew Nienacki, Alicja Majewska, Krzysztof Ibisz");
 		// when
 		BookTo convertToBookTo = bookMapper.convertToBookTo(bookEntity);
+		// then
 		Assert.assertTrue(bookTo.equals(convertToBookTo));
 	}
 
@@ -51,6 +53,7 @@ public class BookMapperTest {
 		BookTo bookTo = new BookTo(null, null, null);
 		// when
 		BookTo convertToBookTo = bookMapper.convertToBookTo(bookEntity);
+		// then
 		Assert.assertEquals(bookTo,convertToBookTo);
 	}
 
@@ -65,6 +68,7 @@ public class BookMapperTest {
 				"Zbigniew Nienacki");
 		// when
 		BookEntity convertToBookEntity = bookMapper.convertToBookEntity(bookTo);
+		// then
 		Assert.assertTrue(bookEntity.equals(convertToBookEntity));
 	}
 
@@ -76,6 +80,7 @@ public class BookMapperTest {
 		BookTo bookTo = new BookTo(null, null, null);
 		// when
 		BookEntity convertToBookEntity = bookMapper.convertToBookEntity(bookTo);
+		// then
 		Assert.assertEquals(bookEntity, convertToBookEntity);
 	}
 
@@ -91,6 +96,8 @@ public class BookMapperTest {
 				"Zbigniew Nienacki, Alicja Majewska, Krzysztof Ibisz");
 		// when
 		BookEntity convertToBookEntity = bookMapper.convertToBookEntity(bookTo);
+		// then
+		
 		Assert.assertTrue(bookEntity.equals(convertToBookEntity));
 	}
 

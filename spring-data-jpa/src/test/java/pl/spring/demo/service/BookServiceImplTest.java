@@ -1,6 +1,5 @@
 package pl.spring.demo.service;
 
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,39 +18,53 @@ import static org.junit.Assert.*;
 @ContextConfiguration(locations = "CommonServiceTest-context.xml")
 public class BookServiceImplTest {
 
-    @Autowired
-    private BookService bookService;
+	@Autowired
+	private BookService bookService;
 
-    @Test
-    public void testShouldFindAllBooks() {
-        // when
-        List<BookTo> allBooks = bookService.findAllBooks();
-        // then
-        assertNotNull(allBooks);
-        assertFalse(allBooks.isEmpty());
-        assertEquals(6, allBooks.size());
-    }
+	@Test
+	public void testShouldFindAllBooks() {
+		// when
+		List<BookTo> allBooks = bookService.findAllBooks();
+		// then
+		assertNotNull(allBooks);
+		assertFalse(allBooks.isEmpty());
+		assertEquals(6, allBooks.size());
+	}
 
-    @Test
-    @Ignore
-    public void testShouldFindAllBooksByTitle() {
-        // given
-        final String title = "Opium w rosole";
-        // when
-        List<BookTo> booksByTitle = bookService.findBooksByTitle(title);
-        // then
-        assertNotNull(booksByTitle);
-        assertFalse(booksByTitle.isEmpty());
-    }
+	@Test
+	public void testShouldFindAllBooksByTitle() {
+		// given
+		final String title = "Opium w rosole";
+		// when
+		List<BookTo> booksByTitle = bookService.findBooksByTitle(title);
+		// then
+		assertNotNull(booksByTitle);
+		assertFalse(booksByTitle.isEmpty());
+		assertTrue(booksByTitle.contains(new BookTo(2L, "Opium w rosole",
+				"Hanna Ożogowska")));
+	}
 
-    @Test(expected = BookNotNullIdException.class)
-    public void testShouldThrowBookNotNullIdException() {
-        // given
-        final BookTo bookToSave = new BookTo();
-        bookToSave.setId(22L);
-        // when
-        bookService.saveBook(bookToSave);
-        // then
-        fail("test should throw BookNotNullIdException");
-    }
+	@Test
+	public void testShouldFindAllBooksByAuthor() {
+		// given
+		final String author = "Jan Parandowski";
+		// when
+		List<BookTo> booksByAuthor = bookService.findBooksByAuthor(author);
+		// then
+		assertNotNull(booksByAuthor);
+		assertFalse(booksByAuthor.isEmpty());
+		assertTrue(booksByAuthor.contains(new BookTo(3L, "Przygody Odyseusza",
+				"Jan Parandowski")));
+	}
+
+	@Test(expected = BookNotNullIdException.class)
+	public void testShouldThrowBookNotNullIdException() {
+		// given
+		final BookTo bookToSave = new BookTo();
+		bookToSave.setId(22L);
+		// when
+		bookService.saveBook(bookToSave);
+		// then
+		fail("test should throw BookNotNullIdException");
+	}
 }

@@ -15,18 +15,35 @@ import pl.spring.demo.to.BookTo;
 public class BookMapper {
 
 	public BookTo convertToBookTo(BookEntity bookEntity) {
-		String authors = new String("");
-		for (int i = 0; i < bookEntity.getAuthors().size(); ++i) {
-			authors += (bookEntity.getAuthors().get(i).getFirstName() + " " + bookEntity
-					.getAuthors().get(i).getLastName());
-			if (i < bookEntity.getAuthors().size() - 1) {
-				authors += ", ";
-			}
-		}
-		if(bookEntity.getAuthors().size() == 0){
+		String authors;
+		if (noAuthors(bookEntity)) {
 			authors = null;
+		} else {
+			StringBuilder stringBuilder = new StringBuilder();
+			for (int i = 0; i < bookEntity.getAuthors().size(); ++i) {
+				buildAuthor(bookEntity, stringBuilder, i);
+			}
+			stringBuilder.delete(stringBuilder.length() - 2,
+					stringBuilder.length());
+
+			authors = stringBuilder.toString();
 		}
+
 		return new BookTo(bookEntity.getId(), bookEntity.getTitle(), authors);
+	}
+
+	private void buildAuthor(BookEntity bookEntity,
+			StringBuilder stringBuilder, int i) {
+		stringBuilder.append(bookEntity.getAuthors().get(i)
+				.getFirstName()
+				+ " "
+				+ bookEntity.getAuthors().get(i).getLastName()
+				+ ", ");
+	}
+
+	private boolean noAuthors(BookEntity bookEntity) {
+		return bookEntity.getAuthors() == null
+				|| bookEntity.getAuthors().isEmpty();
 	}
 
 	public BookEntity convertToBookEntity(BookTo bookTo) {
@@ -57,11 +74,11 @@ public class BookMapper {
 		if (authorNames.length != 0) {
 			AuthorTo authorTo = new AuthorTo();
 			authorTo.setLastName(authorNames[authorNames.length - 1]);
-			String firstName = new String("");
+			StringBuilder stringBuilder = new StringBuilder();
 			for (int i = 0; i < authorNames.length - 1; ++i) {
-				firstName += authorNames[i];
+				stringBuilder.append(authorNames[i]);
 			}
-			authorTo.setFirstName(firstName);
+			authorTo.setFirstName(stringBuilder.toString());
 			return authorTo;
 		}
 		return null;

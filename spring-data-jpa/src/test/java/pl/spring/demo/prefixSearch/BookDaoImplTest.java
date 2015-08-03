@@ -2,26 +2,41 @@ package pl.spring.demo.prefixSearch;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.mockito.internal.util.reflection.Whitebox;
 
 import pl.spring.demo.dao.BookDao;
 import pl.spring.demo.dao.impl.BookDaoImpl;
 import pl.spring.demo.to.AuthorTo;
 import pl.spring.demo.to.BookEntity;
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = "CommonServiceTest-context.xml")
 public class BookDaoImplTest {
 
-	@Autowired
 	BookDao bookDao = new BookDaoImpl();
+
+	@Before
+	public void setUpt() {
+		Set<BookEntity> ALL_BOOKS = new HashSet<>();
+		addTestBooks(ALL_BOOKS);
+		Whitebox.setInternalState(bookDao, "ALL_BOOKS", ALL_BOOKS);
+
+	}
+
+	@Test
+	public void shouldFindAllBooks() {
+		// given
+		int size = 6;
+		// when
+		List<BookEntity> foundBooks = bookDao.findAll();
+		// then
+		Assert.assertEquals(size, foundBooks.size());
+	}
 
 	@Test
 	public void shouldFindBookByFullTitle() {
@@ -138,8 +153,27 @@ public class BookDaoImplTest {
 		// when
 		List<BookEntity> foundBooks = bookDao.findBooksByAuthor(fullName);
 		// then
-		Assert.assertTrue(foundBooks.size() == 0);
+		Assert.assertTrue(foundBooks.isEmpty());
+	}
 
+	private void addTestBooks(Set<BookEntity> ALL_BOOKS) {
+		ALL_BOOKS.add(new BookEntity(1L, "Romeo i Julia",
+				new ArrayList<AuthorTo>(Arrays.asList(new AuthorTo(1L,
+						"Wiliam", "Szekspir")))));
+		ALL_BOOKS.add(new BookEntity(2L, "Opium w rosole",
+				new ArrayList<AuthorTo>(Arrays.asList(new AuthorTo(1L, "Hanna",
+						"Ożogowska")))));
+		ALL_BOOKS.add(new BookEntity(3L, "Przygody Odyseusza",
+				new ArrayList<AuthorTo>(Arrays.asList(new AuthorTo(1L, "Jan",
+						"Parandowski")))));
+		ALL_BOOKS.add(new BookEntity(4L, "Awantura w Niekłaju",
+				new ArrayList<AuthorTo>(Arrays.asList(new AuthorTo(1L,
+						"Edmund", "Niziurski")))));
+		ALL_BOOKS.add(new BookEntity(5L, "Pan Samochodzik i Fantomas",
+				new ArrayList<AuthorTo>(Arrays.asList(new AuthorTo(1L,
+						"Zbigniew", "Nienacki")))));
+		ALL_BOOKS.add(new BookEntity(6L, "Zemsta", new ArrayList<AuthorTo>(
+				Arrays.asList(new AuthorTo(1L, "Aleksander", "Fredro")))));
 	}
 
 }

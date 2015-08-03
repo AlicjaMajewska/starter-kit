@@ -21,7 +21,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class BookDaoImpl implements BookDao {
 
-	private final Set<BookEntity> ALL_BOOKS = new HashSet<>();
+	private static  Set<BookEntity> ALL_BOOKS = new HashSet<>();
 	@Autowired
 	private Sequence sequence;
 	@Autowired
@@ -63,10 +63,8 @@ public class BookDaoImpl implements BookDao {
 						&& authorTo.getLastName().startsWith(splitAuthor[1])) {
 					foundBooks.add(bookEntity);
 				}
-
 			}
 		}
-
 		return foundBooks;
 	}
 
