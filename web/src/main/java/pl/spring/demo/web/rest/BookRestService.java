@@ -24,4 +24,9 @@ public class BookRestService {
     public BookTo saveBook(@RequestBody BookTo book) {
         return bookService.saveBook(book);
     }
+    @RequestMapping(value = "/book", method = RequestMethod.DELETE)
+    public void delete(@RequestBody BookTo book) {
+    	System.out.println("\033[36m Usunalem!");	
+    	bookService.removeBook(book);
+    }
 }

@@ -21,4 +21,18 @@ public class BookController {
         params.put("books", allBooks);
         return "bookList";
     }
+//    @RequestMapping(value = "/books", method = RequestMethod.GET)
+//    public String removeBook() {
+//    	System.out.println("Wszedlem az tutaj");
+//    	return "bookList";
+//    }
+//    
+//    @RequestMapping(value = "/bookToBook", method = RequestMethod.GET)
+//    public String bookListAll(Map<String, Object> params) {
+//    	final List<BookTo> allBooks = bookService.findAllBooks();
+//    	params.put("tertis", allBooks);
+//    	params.put("cub", "I'm a cub");
+//    	
+//    	return "bookList";
+//    }
 }
