@@ -107,4 +107,19 @@ public class BookRestServiceTest {
 		// then
 		response.andExpect(status().isOk());
 	}
+//	@Test
+//	public void testShouldRemoveBookButtonOption() throws Exception {
+//		// given
+////		File file = FileUtils
+////				.getFileFromClasspath("classpath:pl/spring/demo/web/json/bookToRemove.json");
+////		String json = FileUtils.readFileToString(file);
+//		// when
+//		
+//		ResultActions response = this.mockMvc.perform(get("/bookRemoved")
+//				.accept(MediaType.APPLICATION_JSON)
+//				.contentType(MediaType.APPLICATION_JSON)).andExpect(status().isOk());;
+////				.content(json.getBytes()));
+//		// then
+//		response.andExpect(status().isOk());
+//	}
 }

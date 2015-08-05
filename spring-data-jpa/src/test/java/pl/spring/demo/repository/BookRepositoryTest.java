@@ -60,4 +60,5 @@ public class BookRepositoryTest {
 		BookEntity emptyBook = bookRepository.findOne(testBook.getId());
 		assertNull(emptyBook);
 	}
+	
 }

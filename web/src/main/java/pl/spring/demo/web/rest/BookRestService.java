@@ -12,21 +12,28 @@ import java.util.List;
 @ResponseBody
 public class BookRestService {
 
-    @Autowired
-    private BookService bookService;
+	@Autowired
+	private BookService bookService;
 
-    @RequestMapping(value = "/books-by-title", method = RequestMethod.GET)
-    public List<BookTo> findBooksByTitle(@RequestParam("titlePrefix") String titlePrefix) {
-        return bookService.findBooksByTitle(titlePrefix);
-    }
+	@RequestMapping(value = "/books-by-title", method = RequestMethod.GET)
+	public List<BookTo> findBooksByTitle(
+			@RequestParam("titlePrefix") String titlePrefix) {
+		return bookService.findBooksByTitle(titlePrefix);
+	}
 
-    @RequestMapping(value = "/book", method = RequestMethod.POST)
-    public BookTo saveBook(@RequestBody BookTo book) {
-        return bookService.saveBook(book);
-    }
-    @RequestMapping(value = "/book", method = RequestMethod.DELETE)
-    public void delete(@RequestBody BookTo book) {
-    	System.out.println("\033[36m Usunalem!");	
-    	bookService.removeBook(book);
-    }
+	@RequestMapping(value = "/books-by-author", method = RequestMethod.GET)
+	public List<BookTo> findBooksByAuthor(
+			@RequestParam("authorPrefix") String authorPrefix) {
+		return bookService.findBooksByAuthor(authorPrefix);
+	}
+
+	@RequestMapping(value = "/book", method = RequestMethod.POST)
+	public BookTo saveBook(@RequestBody BookTo book) {
+		return bookService.saveBook(book);
+	}
+
+	@RequestMapping(value = "/book", method = RequestMethod.DELETE)
+	public void delete(@RequestBody BookTo book) {
+		bookService.removeBook(book);
+	}
 }
