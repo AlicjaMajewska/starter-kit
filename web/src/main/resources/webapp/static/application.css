@@ -1,3 +1,21 @@
 .sample {
     color: red;
 }
+body{
+	background-color: GhostWhite;
+	color: navy;
+	align:center;
+}
+table {
+	
+	border: 1px solid green;
+}
+
+td, tr {
+	padding: 2px;
+}
+
+tr {
+	background-color: Azure;
+	color: navy;
+}

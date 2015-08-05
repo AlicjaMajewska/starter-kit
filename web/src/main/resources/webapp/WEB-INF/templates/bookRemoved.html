@@ -2,10 +2,12 @@
 <html xmlns:th="http://thymeleaf.org">
 <head lang="en">
 <meta charset="UTF-8" />
+ <link rel="stylesheet" th:href="@{/static/application.css}" href="/static/application.css" />
 <title>Książka usunięta</title>
 </head>
 
 <body>
+	<h3>Uwaga</h3>
 	<p th:inline="text">Książka o tytule [[${title}]] została usunięta.</p>
 </body>
 </html>
