@@ -10,6 +10,7 @@ import pl.spring.demo.repository.BookRepository;
 import pl.spring.demo.service.BookService;
 import pl.spring.demo.to.BookTo;
 
+import java.awt.print.Book;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -49,7 +50,8 @@ public class BookServiceImpl implements BookService {
     }
 
 	@Override
-	public void removeBook(BookTo book) {
-		bookRepository.delete( BookMapper.map(book));
+	public void removeBook(long id) {
+		bookRepository.deleteById(id);
 	}
+	
 }

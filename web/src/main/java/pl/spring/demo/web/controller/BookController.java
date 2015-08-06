@@ -26,23 +26,8 @@ public class BookController {
 
 	@RequestMapping(value = "/bookRemoved", method = RequestMethod.GET)
     public String bookRemoved(@RequestParam(value="id") long id, Map<String, Object> parameters) {
-		BookTo bookToRemove = bookService.findBookById(id);
-    	parameters.put("title", bookToRemove.getTitle());
-    	bookService.removeBook(bookToRemove);
+		parameters.put("title", bookService.findBookById(id).getTitle());
+    	bookService.removeBook(id);
     	return "bookRemoved";
     }
-	// @RequestMapping(value = "/books", method = RequestMethod.GET)
-	// public String removeBook() {
-	// System.out.println("Wszedlem az tutaj");
-	// return "bookList";
-	// }
-	//
-	// @RequestMapping(value = "/bookToBook", method = RequestMethod.GET)
-	// public String bookListAll(Map<String, Object> params) {
-	// final List<BookTo> allBooks = bookService.findAllBooks();
-	// params.put("tertis", allBooks);
-	// params.put("cub", "I'm a cub");
-	//
-	// return "bookList";
-	// }
 }

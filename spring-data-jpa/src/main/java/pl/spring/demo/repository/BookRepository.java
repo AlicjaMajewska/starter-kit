@@ -20,6 +20,10 @@ public interface BookRepository extends JpaRepository<BookEntity, Long> {
     @Modifying
     @Query("delete from BookEntity b where b = :book")
 	public void delete(@Param("book")BookEntity book);
+ 
+    @Modifying
+    @Query("delete from BookEntity b where b.id = :id")
+    public void deleteById(@Param("id")long id);
    
     @Query("select book from BookEntity book where book.id =:id")
 	public List<BookEntity> findBookById(long id);
