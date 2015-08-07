@@ -1,3 +1,4 @@
+
 package pl.spring.demo.web.controller;
 
 import org.eclipse.jetty.server.session.HashSessionManager;
@@ -23,13 +24,11 @@ public class BookController {
 	
 	 HashSessionManager manager = new HashSessionManager();
      SessionHandler sessions = new SessionHandler(manager);
- //    contextHandler.setHandler(sessions);
 
 	@RequestMapping(value = "/books", method = RequestMethod.GET)
 	public String bookList(Map<String, Object> params) {
 		final List<BookTo> allBooks = bookService.findAllBooks();
 		params.put("books", allBooks);
-		System.out.println("Wywolalem books, get");
 		return "bookList";
 	}
 	@RequestMapping(value = "/removed", method = RequestMethod.GET)
@@ -41,9 +40,7 @@ public class BookController {
     public String bookRemoved(@RequestParam(value="id") long id,  RedirectAttributes redirectAttributes) {
 		BookTo bookTo = bookService.findBookById(id);
 		redirectAttributes.addFlashAttribute("title", bookTo.getTitle());
-		System.out.println(bookTo.getTitle());
     	bookService.removeBook(id);
-    	System.out.println("Wywolalem books, post");
     	return "redirect:/removed";
     }
 }
