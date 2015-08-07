@@ -5,3 +5,16 @@ insert into book (id, title, authors) values (4, 'Czwarta książka', 'Alicja Ma
 insert into book (id, title, authors) values (5, 'Najwspanialsza książka', 'Alicja Majewska');
 insert into book (id, title, authors) values (6, 'Kolejna najwspanialsza książka', 'Alicja Majewska');
 insert into book (id, title, authors) values (7, 'Nastepna najwspanialsza', 'Alicja Majewska');
+insert into book (id, title, authors) values (8, 'Nastepna najwspanialsza', 'Alicja Majewska');
+insert into book (id, title, authors) values (9, 'Nastepna najwspanialsza', 'Alicja Majewska');
+insert into book (id, title, authors) values (10, 'Nastepna najwspanialsza', 'Alicja Majewska');
+insert into book (id, title, authors) values (11, 'Nastepna najwspanialsza', 'Alicja Majewska');
+insert into book (id, title, authors) values (12, 'Nastepna najwspanialsza', 'Alicja Majewska');
+insert into book (id, title, authors) values (13, 'Nastepna najwspanialsza', 'Alicja Majewska');
+insert into book (id, title, authors) values (14, 'Nastepna najwspanialsza', 'Alicja Majewska');
+insert into book (id, title, authors) values (15, 'Nastepna najwspanialsza', 'Alicja Majewska');
+insert into book (id, title, authors) values (16, 'Nastepna najwspanialsza', 'Alicja Majewska');
+insert into book (id, title, authors) values (17, 'Nastepna najwspanialsza', 'Alicja Majewska');
+insert into book (id, title, authors) values (18, 'Nastepna najwspanialsza', 'Alicja Majewska');
+insert into book (id, title, authors) values (19, 'Nastepna najwspanialsza', 'Alicja Majewska');
+insert into book (id, title, authors) values (20, 'Nastepna najwspanialsza', 'Alicja Majewska');

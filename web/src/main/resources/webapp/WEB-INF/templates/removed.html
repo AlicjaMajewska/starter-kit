@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head lang="en">
+<meta charset="UTF-8" />
+<link rel="stylesheet" th:href="@{/static/application.css}"
+	href="/static/application.css" />
+<title>Książka usunięta</title>
+</head>
+
+<body>
+
+	<p class="message" th:inline="text">Książka o tytule [[${title}]]
+		została usunięta.</p>
+
+	<form method="post" action="">
+		<div id="formbox">
+			<input type="button" id="btn_i"
+				onclick="location.href='/workshop/books';" value="Return"
+				style="background-color: DeepSkyBlue;" />
+		</div>
+	</form>
+	
+</body>
+</html>

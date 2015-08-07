@@ -22,7 +22,7 @@
 				<td th:text="${book.id}">id</td>
 				<td th:text="${book.title}">title</td>
 				<td th:text="${book.authors}">authors</td>
-				<td><form action="/workshop/bookRemoved" method="get">
+				<td><form action="/workshop/books" method="post">
 						<input type="hidden" name="id" th:value="${book.id}" /> <input
 							type="submit" value="Delete book"
 							style="background-color: DeepSkyBlue; width: 100%" />

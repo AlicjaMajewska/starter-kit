@@ -1,13 +1,14 @@
 .sample {
-    color: red;
+	color: red;
 }
-body{
+
+body {
 	background-color: GhostWhite;
 	color: navy;
-	align:center;
+	align: center;
 }
+
 table {
-	
 	border: 1px solid green;
 }
 
@@ -18,4 +19,16 @@ td, tr {
 tr {
 	background-color: Azure;
 	color: navy;
+}
+
+#formbox {
+	margin: auto 0;
+	text-align: center;
+}
+#btn_i {
+            width:125px;
+        }
+.message{
+	color: navy;
+	text-align: center;
 }
