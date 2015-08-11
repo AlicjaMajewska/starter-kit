@@ -1,67 +1,70 @@
 package pl.spring.demo.entity;
-import javax.persistence.*;
-import java.io.Serializable;
+
 import java.util.HashSet;
 import java.util.Set;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
 @Entity
 @Table(name = "LIBRARY")
-public class LibraryEntity {
-	
+public class LibraryEntity  {
+
 	@Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+	private long id;
+
+	@Column(name = "name", length = 50, nullable = false)
+	private String name;
+
+	@OneToMany(mappedBy = "libraryEntity", cascade = CascadeType.REMOVE)
+	private Set<BookEntity> books;
+
+	// public void save(BookEntity bookEntity){
+	// // zadbac o id?
+	// books.add(bookEntity);
+	// }
+	// public void remove(BookEntity bookEntity){
+	// if(books.contains(bookEntity)){
+	// books.remove(bookEntity);
+	// }
+	// }
+	public LibraryEntity(Long id, String name, HashSet<BookEntity> books) {
+		this.id = id;
+		this.name = name;
+		this.books = books;
+	}
+
+	// for hibernate
+	protected LibraryEntity() {
+	}
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+
+	 public Set<BookEntity> getBooks() {
+	 return books;
+	 }
 	
-	 @Column(nullable = false, length = 50)
-	 private String title;
+	 public void setBooks(Set<BookEntity> books) {
+	 this.books = books;
+	 }
+
 }
-
-//package pl.spring.demo.entity;
-//
-
-//
-
-//public class BookEntity implements Serializable {
-    
-//    @Column(nullable = false, length = 50)
-//    private String title;
-//
-//    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-//    @JoinTable(name = "BOOK_AUTHOR",
-//            joinColumns = {@JoinColumn(name = "BOOK_ID", nullable = false, updatable = false)},
-//            inverseJoinColumns = {@JoinColumn(name = "AUTHOR_ID", nullable = false, updatable = false)}
-//    )
-//    private Set<AuthorEntity> authors = new HashSet<>();
-//
-//    // for hibernate
-//    protected BookEntity() {
-//}
-//
-//    public BookEntity(Long id, String title) {
-//        this.id = id;
-//        this.title = title;
-//    }
-//
-//    public Long getId() {
-//        return id;
-//    }
-//
-//    public void setId(Long id) {
-//        this.id = id;
-//    }
-//
-//    public String getTitle() {
-//        return title;
-//    }
-//
-//    public void setTitle(String title) {
-//        this.title = title;
-//    }
-//
-//    public Set<AuthorEntity> getAuthors() {
-//        return authors;
-//    }
-//
-//    public void setAuthors(Set<AuthorEntity> authors) {
-//        this.authors = authors;
-//    }
-//}

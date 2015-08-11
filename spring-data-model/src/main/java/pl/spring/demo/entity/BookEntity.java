@@ -14,6 +14,10 @@ public class BookEntity implements Serializable {
     @Column(nullable = false, length = 50)
     private String title;
 
+ // tu jest fk - info do jakiej biblioteki nalezy
+    @ManyToOne
+    private LibraryEntity libraryEntity;
+    
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(name = "BOOK_AUTHOR",
             joinColumns = {@JoinColumn(name = "BOOK_ID", nullable = false, updatable = false)},
