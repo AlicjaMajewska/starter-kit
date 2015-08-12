@@ -66,5 +66,16 @@ public class LibraryRepositoryTest {
 		}
 		assertTrue("List of found libraries contains " + fullName1 +" and " + fullName2 + " library", contains1 && contains2);
 	}
+	@Test
+	public void testShouldRemoveLibraryId2(){
+		//given
+		long countBeforeRemoval = libraryRepository.count();
+		//when
+		libraryRepository.delete(2L);
+		long countAfterRemoval = libraryRepository.count();
+		//then
+		assertTrue("One Library has been removed",countBeforeRemoval -1 == countAfterRemoval );
+		assertFalse(libraryRepository.exists(2L));
+	}
 }
 
