@@ -1,5 +1,6 @@
-package searchcriteria;
+package pl.spring.demo.searchcriteria;
 
+//import pl.spring.demo.entity.QAuthorEntity
 public class BookSearchCriteria {
 
 	private String title;

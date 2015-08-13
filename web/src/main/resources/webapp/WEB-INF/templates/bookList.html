@@ -1,12 +1,45 @@
 <!DOCTYPE html>
 <html xmlns:th="http://thymeleaf.org">
 <head lang="en">
-    <meta charset="UTF-8"/>
-    <title>Lista książek</title>
+<meta charset="UTF-8" />
+<title>Lista książek</title>
 </head>
 <body>
-    <div th:each="book : ${books}">
-        <p th:text="${book.title}">title</p>
-    </div>
+	<table align="center">
+		<thead>
+			<tr style="background-color: #7E76D7; color: Azure; font-size: 25px">
+				<th colspan="5">Lista książek</th>
+			</tr>
+			<tr style="background-color: #7E76D7; color: Azure; font-size: 20px">
+				<td>Id</td>
+				<td>Title</td>
+				<td>Authors</td>
+				<td>LibraryId</td>
+				<td>LibraryName</td>
+			</tr>
+		</thead>
+		<tbody>
+					<th:block th:each="book : ${books}">
+			<tr>
+								<td th:text="${book.id}">Id</td>
+								<td th:text="${book.title}">title</td>
+								<td th:text="${book.authors}">Authors</td>
+								<td th:text="${book.libraryId}">LibraryId</td>
+								<td th:text="${book.libraryName}">LibraryName</td>
+			</tr>
+			</th:block>
+		</tbody>
+
+	</table>
+	<!-- 	<div th:each="book : ${books}"> -->
+	<!-- 		<p th:text="${book.id}">title</p> -->
+	<!-- 		<p th:text="${book.title}">title</p> -->
+	<!-- 		<p th:text="${book.authors}">title</p> -->
+	<!-- 		<p th:text="${book.libraryId}">title</p> -->
+	<!-- 		<p th:text="${book.libraryName}">title</p> -->
+	<!-- 	</div> -->
+
+
+
 </body>
 </html>

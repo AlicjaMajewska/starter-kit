@@ -23,19 +23,14 @@ public class LibraryEntity  {
 	@OneToMany(mappedBy = "libraryEntity", cascade = CascadeType.REMOVE)
 	private Set<BookEntity> books;
 
-	// public void save(BookEntity bookEntity){
-	// // zadbac o id?
-	// books.add(bookEntity);
-	// }
-	// public void remove(BookEntity bookEntity){
-	// if(books.contains(bookEntity)){
-	// books.remove(bookEntity);
-	// }
-	// }
 	public LibraryEntity(Long id, String name, HashSet<BookEntity> books) {
 		this.id = id;
 		this.name = name;
 		this.books = books;
+	}
+	public LibraryEntity(Long id, String name) {
+		this.id = id;
+		this.name = name;
 	}
 
 	// for hibernate
