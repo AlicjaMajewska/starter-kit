@@ -1,11 +1,13 @@
 package pl.spring.demo.repository;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import pl.spring.demo.entity.BookEntity;
 import pl.spring.demo.entity.LibraryEntity;
 
 import java.util.List;
@@ -19,6 +21,13 @@ public class LibraryRepositoryTest {
 
 	@Autowired
 	private LibraryRepository libraryRepository;
+
+	
+	@Before
+	public void setUp(){
+		LibraryEntity libraryEntity = new LibraryEntity(100L, "nameLib");
+		libraryRepository.save(libraryEntity);
+	}
 
 	@Test
 	public void testShouldFindOneLibraryByNameBibliot() {
@@ -71,11 +80,11 @@ public class LibraryRepositoryTest {
 		//given
 		long countBeforeRemoval = libraryRepository.count();
 		//when
-		libraryRepository.delete(2L);
+		libraryRepository.delete(100L);
 		long countAfterRemoval = libraryRepository.count();
 		//then
 		assertTrue("One Library has been removed",countBeforeRemoval -1 == countAfterRemoval );
-		assertFalse(libraryRepository.exists(2L));
+		assertFalse(libraryRepository.exists(100L));
 	}
 }
 

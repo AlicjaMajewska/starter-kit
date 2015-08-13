@@ -41,7 +41,7 @@ public class BookRepositoryTest {
 				.findAllBooksFromLibrary(libraryId);
 		// then
 		assertFalse(booksEntity.isEmpty());
-		assertTrue(booksEntity.size() == 3);
+		assertTrue(booksEntity.size() == 4);
 	}
 
 	@Test

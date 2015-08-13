@@ -1,4 +1,6 @@
+pl\spring\demo\service\BookServiceTest.class
 pl\spring\demo\repository\BookRepositoryTest.class
 pl\spring\demo\service\LibraryServiceTest.class
 pl\spring\demo\repository\LibraryRepositoryTest.class
 pl\spring\demo\dao\BookDaoImplTest.class
+pl\spring\demo\mapper\BookMapperTest.class

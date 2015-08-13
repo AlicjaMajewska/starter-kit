@@ -2,9 +2,9 @@ pl\spring\demo\repository\LibraryRepository.class
 pl\spring\demo\service\impl\LibraryServiceImpl.class
 pl\spring\demo\service\BookService.class
 pl\spring\demo\dao\LibraryDao.class
+pl\spring\demo\searchcriteria\BookSearchCriteria.class
 pl\spring\demo\dao\Dao.class
 pl\spring\demo\dao\impl\LibraryDaoImpl.class
-searchcriteria\BookSearchCriteria.class
 pl\spring\demo\dao\BookDao.class
 pl\spring\demo\service\LibraryService.class
 pl\spring\demo\dao\impl\BookDaoImpl.class

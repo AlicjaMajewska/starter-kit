@@ -1,11 +1,11 @@
 package pl.spring.demo.searchcriteria;
 
-//import pl.spring.demo.entity.QAuthorEntity
+
 public class BookSearchCriteria {
 
-	private String title;
-	private String author;
-	private String libraryName;
+	private String title = null;
+	private String author = null;
+	private String libraryName = null;
 	
 
 	public String getTitle() {
@@ -31,6 +31,8 @@ public class BookSearchCriteria {
 	public void setLibraryName(String libraryName) {
 		this.libraryName = libraryName;
 	}
+	
+	
 	
 	
 }
