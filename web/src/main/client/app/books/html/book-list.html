@@ -21,10 +21,13 @@
             <td>{{ book.title }}</td>
             <td>{{ book.authors }}</td>
             <td>
-                <button ng-click="editBook(book.id)">Edytuj</button>
+<!--                 <button ng-click="editBook(book.id)">Edytuj</button> -->
+                <button  ng-click="launch('Edytuj')"">Edytuj</button>
+
             </td>
             <td>
-                <button ng-click="deleteBook(book.id)">Usuń</button>
+                <button  ng-click="deleteBook(book.id)">Usuń</button>
+
             </td>
         </tr>
     </table>

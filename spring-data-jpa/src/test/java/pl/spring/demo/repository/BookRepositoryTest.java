@@ -19,12 +19,25 @@ public class BookRepositoryTest {
 
     @Test
     public void testShouldFindBookById() {
-        // given
-        final long bookId = 1;
-        // when
-        BookEntity bookEntity = bookRepository.findOne(bookId);
-        // then
-        assertNotNull(bookEntity);
-        assertEquals("Pierwsza książka", bookEntity.getTitle());
+    	// given
+    	final long bookId = 1;
+    	// when
+    	BookEntity bookEntity = bookRepository.findOne(bookId);
+    	// then
+    	assertNotNull(bookEntity);
+    	assertEquals("Pierwsza książka", bookEntity.getTitle());
+    }
+    @Test
+    public void testShouldChangeTitleOfBook() {
+    	// given
+    	final long bookId = 1;
+    	final String newTitle = "Alicja";
+    	// when
+    	
+    	bookRepository.editBookTitle(bookId, newTitle);
+    	BookEntity bookEntity = bookRepository.findOne(bookId);
+    	// then
+    	assertNotNull(bookEntity);
+    	assertEquals(newTitle, bookEntity.getTitle());
     }
 }
