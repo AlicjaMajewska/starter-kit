@@ -28,9 +28,20 @@ angular.module('app.books').controller('BookSearchController', function ($scope,
             Flash.create('success', 'Książka została usunięta.', 'custom-class');
         });
     };
+    $scope.editBook = function () {
+//    	bookService.deleteBook(bookId).then(function () {
+//    		removeBookById(bookId);
+//    		Flash.create('success', 'Książka została usunięta.', 'custom-class');
+//    	});
+    	 $location.url('/books/edit-book');
+    	
+    };
 
     $scope.addBook = function () {
         $location.url('/books/add-book');
+    };
+    $scope.addAuthor = function () {
+    	$location.url('/books/add-author');
     };
 
 });

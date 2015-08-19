@@ -8,16 +8,21 @@
     <input type="text" ng-model="prefix">
     <button ng-click="search()">Szukaj</button>
     <button ng-click="addBook()">Dodaj książkę</button>
+    <button ng-click="addAuthor()">Dodaj autora</button>
 
     <table>
         <tr>
             <th>Tytuł</th>
             <th>Autorzy</th>
+            <th>Edytuj</th>
             <th>Usuń</th>
         </tr>
         <tr ng-repeat="book in books">
             <td>{{ book.title }}</td>
             <td>{{ book.authors }}</td>
+            <td>
+                <button ng-click="editBook(book.id)">Edytuj</button>
+            </td>
             <td>
                 <button ng-click="deleteBook(book.id)">Usuń</button>
             </td>
