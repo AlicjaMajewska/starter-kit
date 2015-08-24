@@ -1,0 +1,15 @@
+<div>
+    <form novalidate>
+        <div class="modal-header">
+            <h3 class="modal-title">Edytuj książkę</h3>
+        </div>
+        <div class="modal-body">
+            <p>Podaj nowy tytuł</p>
+        <input type="text" ng-model="newTitle">
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-success" ng-click="changeTitle()">Zapisz</button>
+            <button class="btn btn-warning" ng-click="$dismiss()">Zamknij</button>
+        </div>
+    </form>
+</div>

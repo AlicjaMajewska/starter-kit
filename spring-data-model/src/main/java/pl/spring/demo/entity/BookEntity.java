@@ -3,7 +3,9 @@ package pl.spring.demo.entity;
 import javax.persistence.*;
 
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -15,18 +17,18 @@ public class BookEntity implements Serializable {
     @Column(nullable = false, length = 50)
     private String title;
     
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.REFRESH)
-    //@JoinTable(name = "BOOK_AUTHOR", joinColumns = { @JoinColumn(name = "BOOK_ID", nullable = false, updatable = false) }, inverseJoinColumns = { @JoinColumn(name = "AUTHOR_ID", nullable = false, updatable = false) })
-    @JoinTable(name = "BOOK_AUTHOR", joinColumns = { @JoinColumn(name = "BOOK_ID", nullable = false, updatable = false) }, inverseJoinColumns = { @JoinColumn(name = "AUTHOR_ID", nullable = true, updatable = false) })
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+    @JoinTable(name = "BOOK_AUTHOR", joinColumns = { @JoinColumn(name = "BOOK_ID", nullable = false) }, inverseJoinColumns = { @JoinColumn(name = "AUTHOR_ID", nullable = false) })
 	private Set<AuthorEntity> authors = new HashSet<>();
 
     // for hibernate
     protected BookEntity() {
 }
 
-    public BookEntity(Long id, String title) {
+    public BookEntity(Long id, String title, Collection<AuthorEntity> authors) {
 		this.id = id;
 		this.title = title;
+		this.authors.addAll(authors);
 	}
     
     public Long getId() {

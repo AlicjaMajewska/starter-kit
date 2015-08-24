@@ -1,12 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: pl.spring.demo.repository.BookRepositoryTest
 -------------------------------------------------------------------------------
-Tests run: 2, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 1.905 sec <<< FAILURE! - in pl.spring.demo.repository.BookRepositoryTest
-testShouldChangeTitleOfBook(pl.spring.demo.repository.BookRepositoryTest)  Time elapsed: 0.031 sec  <<< ERROR!
-org.hibernate.LazyInitializationException: could not initialize proxy - no Session
-	at org.hibernate.proxy.AbstractLazyInitializer.initialize(AbstractLazyInitializer.java:164)
-	at org.hibernate.proxy.AbstractLazyInitializer.getImplementation(AbstractLazyInitializer.java:285)
-	at org.hibernate.proxy.pojo.javassist.JavassistLazyInitializer.invoke(JavassistLazyInitializer.java:185)
-	at pl.spring.demo.entity.BookEntity_$$_jvst7b1_0.getTitle(BookEntity_$$_jvst7b1_0.java)
-	at pl.spring.demo.repository.BookRepositoryTest.testShouldChangeTitleOfBook(BookRepositoryTest.java:41)
-
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.032 sec - in pl.spring.demo.repository.BookRepositoryTest

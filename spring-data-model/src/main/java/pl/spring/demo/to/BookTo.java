@@ -1,17 +1,20 @@
 package pl.spring.demo.to;
 
+import java.util.Collection;
+import java.util.List;
+
 public class BookTo {
     private Long id;
     private String title;
-    private String authors;
+    private Collection<AuthorTo> authorsTo;
 
     public BookTo() {
     }
 
-    public BookTo(Long id, String title, String authors) {
+    public BookTo(Long id, String title, Collection<AuthorTo> authorsTo) {
         this.id = id;
         this.title = title;
-        this.authors = authors;
+        this.authorsTo = authorsTo;
     }
 
     public Long getId() {
@@ -30,11 +33,11 @@ public class BookTo {
         this.title = title;
     }
 
-    public String getAuthors() {
-        return authors;
+    public Collection<AuthorTo> getAuthorsTo() {
+        return authorsTo;
     }
 
-    public void setAuthors(String authors) {
-        this.authors = authors;
+    public void setAuthorsTo( Collection<AuthorTo> authorTo) {
+        this.authorsTo = authorTo;
     }
 }
