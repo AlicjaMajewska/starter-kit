@@ -11,12 +11,18 @@ describe('author controller', function () {
     beforeEach(inject(function ($rootScope) {
         $scope = $rootScope.$new();
     }));
-
-    it('search is defined', inject(function ($controller) {
+    
+    
+    
+    it('search calls authorService.search', inject(function ($controller, authorService, $q) {
+    	//given
+    	$controller('AuthorController', {$scope: $scope});
+    	var searchDeferred = $q.defer();
+    	spyOn(authorService, 'search').and.returnValue(searchDeferred.promise);
         // when
-        $controller('AuthorController', {$scope: $scope});
+    	 $scope.search();
         // then
-        expect($scope.search).toBeDefined();
+        expect(authorService.search).toHaveBeenCalled();
     }));
 
 

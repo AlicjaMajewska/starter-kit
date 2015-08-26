@@ -4,9 +4,9 @@ public class AuthorTo {
 
 	private String firstName;
 	private String lastName;
-	private long id;
+	private Long id;
 
-	public AuthorTo(String firstName, String lastName, long id) {
+	public AuthorTo(String firstName, String lastName, Long id) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -33,11 +33,11 @@ public class AuthorTo {
 		this.lastName = lastName;
 	}
 
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -47,7 +47,7 @@ public class AuthorTo {
 		int result = 1;
 		result = prime * result
 				+ ((firstName == null) ? 0 : firstName.hashCode());
-		result = prime * result + (int) (id ^ (id >>> 32));
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result
 				+ ((lastName == null) ? 0 : lastName.hashCode());
 		return result;
@@ -67,7 +67,10 @@ public class AuthorTo {
 				return false;
 		} else if (!firstName.equals(other.firstName))
 			return false;
-		if (id != other.id)
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
 			return false;
 		if (lastName == null) {
 			if (other.lastName != null)
@@ -76,5 +79,6 @@ public class AuthorTo {
 			return false;
 		return true;
 	}
+
 
 }

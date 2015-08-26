@@ -4,7 +4,7 @@ angular.module('app.authors').factory(
 			'use strict';
 
 			return {
-				search: function(namePrefix) {
+				search: function() {
 					return authorRestService.search();
 				}
 			};

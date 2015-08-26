@@ -1,21 +1,44 @@
 <div>
-    <form novalidate>
-        <div class="modal-header">
-            <h3 class="modal-title">Dodaj książkę</h3>
-        </div>
-        <div class="modal-body">
-            <p>Dodaj tytul</p>
-        <input type="text" ng-model="title">
-            <p>Dodaj imie autora</p>
-        <input type="text" ng-model="firstName">
-            <p>Dodaj nazwisko autora</p>
-        <input type="text" ng-model="lastName">
-        <button ng-click="addAuthor()">Dodaj kolejnego autora</button>
-        
-        </div>
-        <div class="modal-footer">
-            <button class="btn btn-success" ng-click="addBook()">Save</button>
-            <button class="btn btn-warning" ng-click="$dismiss()">Close</button>
-        </div>
-    </form>
+	<form name="addForm" ng-submit="addBook()" novalidate>
+		<div class="modal-header">
+			<h3 class="modal-title">Dodaj książkę</h3>
+		</div>
+		<div class="modal-body">
+		
+			<p ng-show="addForm.title.$invalid && addForm.$submitted">Tytul
+				musi zostac wpisany</p>
+			<input type="text" name="title" placeholder="Tytul" maxlength="50"
+				ng-required="true" ng-model="title">
+
+			<div id="addAuthorsContent" ng-repeat="authorTo in authorsTo">
+				<p></p>
+				<p ng-show="addForm.firstName.$invalid && addForm.$submitted">Imie
+					autora musi zostac wpisane</p>
+				<input type="text" name="firstName" placeholder="Imie"
+					maxlength="50" ng-required="true" ng-model="authorTo.firstName">
+
+				<p></p>
+				<p ng-show="addForm.lastName.$invalid && addForm.$submitted">Nazwisko
+					autora musi zostac wpisane</p>
+				<input type="text" name="lastName" placeholder="Nazwisko"
+					maxlength="50" ng-required="true" ng-model="authorTo.lastName">
+
+				<button type="button" class="btn btn-danger"
+					ng-click="deleteAuthor($index)">Usun autora</button>
+			</div>
+
+			<button type="button" class="btn btn-primary"
+				ng-click="addNextAuthor()">Dodaj kolejnego autora</button>
+		</div>
+		<div class="modal-footer">
+			<input type="submit" class="btn btn-success" id="submit"
+				value="Zapisz" />
+			<button class="btn btn-warning" ng-click="$dismiss()">Zamknij</button>
+		</div>
+	</form>
 </div>
+
+
+
+
+

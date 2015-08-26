@@ -4,14 +4,6 @@ angular.module('app.authors').controller('AuthorController', function ($scope, $
     $scope.authorsTo = [];
     $scope.gridOptions = { data: 'authorsTo' };
     $scope.prefix = '';
-    
-//    $filter('myFilter'{ return function (input) { if(author.firstName.toLowerCase().substr(0,
-//		namePrefix.length) === namePrefix.toLowerCase() ) { input = author; } return input; };
-//    
-//    
-//    });	
-    	
-    
 
     $scope.$on('$viewContentLoaded', function() {
     	authorService.search().then(function (response) {
